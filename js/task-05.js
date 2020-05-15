@@ -7,10 +7,11 @@ const products = [
 
 
   const getAllPropValues = function(arr, prop) {
+    let props = [];
     for(const item of arr){
-      const props = [item[prop]];
-      console.log(props);
+      props.push(item[prop]);
     }
+    return props;
   };
   
   console.log(getAllPropValues(products, 'name')); 
