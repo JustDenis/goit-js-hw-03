@@ -25,15 +25,11 @@ const account = {
    */
   createTransaction(amount, type) {
     let transaction = {};
-    transaction.amount = amount;
-    this.transactionId += 1;
-    transaction.id = this.transactionId;
-    if (type === Transaction.DEPOSIT){
-      transaction.type = Transaction.DEPOSIT;
-    } else if (type === Transaction.WITHDRAW){
-      transaction.type = Transaction.WITHDRAW;
-    }
-    return transaction;
+    return transaction = {
+      amount,
+      type,
+      id: (this.transactionId += 1),
+      };
   },
 
   /*
@@ -81,6 +77,7 @@ const account = {
         return transactionItem;
       } 
     }
+    return 'Транзакции с таким ID не существует!';
   },
 
   /*
@@ -103,7 +100,7 @@ account.deposit(400);
 account.deposit(1000);
 account.withdraw(900);
 account.withdraw(700);
-console.log(account.transactions); // Массив транзакций
+// console.log(account.transactions); // Массив транзакций
 console.log(account.getBalance()); // Проверка баланса
 console.log(account.getTransactionDetails(5)); // Проверка транзакции по ID
 console.log('Колличество средств по данному типу транзакций: ', account.getTransactionTotal('withdraw')); // Общая сумма транзакций по типу
